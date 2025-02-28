@@ -64,7 +64,7 @@ public class OkeyGame {
      */
     public Tile pickTileFromStack() {
         if (nextTileIndex < tiles.length) {
-            return tiles[nextTileIndex++];
+            return tiles[nextTileIndex];
         } else {
             return null; // No tiles left – game tie condition can be handled here.
         }
@@ -102,6 +102,7 @@ public class OkeyGame {
             Tile tile = pickTileFromStack();
             players[currentPlayerIndex].addTile(tile);
             System.out.println("Computer picked up tile from stack: " + tile);
+            nextTileIndex++;
         }
     }
 
@@ -187,4 +188,9 @@ public class OkeyGame {
     public void addTileToCurrentPlayer(Tile t) {
         players[currentPlayerIndex].addTile(t);
     }
+
+    public int getNextTileIndex() {
+        return nextTileIndex;
+    }
+    
 }
