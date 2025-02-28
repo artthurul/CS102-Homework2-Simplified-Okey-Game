@@ -1,10 +1,12 @@
-
 public class Player {
 
     private String playerName;
-    private Tile[] playerTiles;
+    private final Tile[] playerTiles;
     private int numberOfTiles;
 
+    /*
+     * Constructor for the Player class.
+     */
     public Player(String name) {
         this.playerName = name;
         playerTiles = new Tile[15]; // at most 15 tiles at any time
@@ -94,6 +96,7 @@ public class Player {
     /*
      * Searches for a tile in the hand that matches the input tile.
      * Returns the index if found; otherwise, returns -1.
+     * This method is used to find the position of the tile to discard.
      */
     public int findPositionOfTile(Tile inputtedTile) {
         for (int i = 0; i < numberOfTiles; i++) {
@@ -104,6 +107,9 @@ public class Player {
         return -1;
     }
 
+    /*
+     * Displays the tiles in the player's hand.
+     */
     public void displayTiles() {
         String title1 = playerName + "'s Tiles Below";
         String title2 = "";
@@ -118,6 +124,7 @@ public class Player {
         System.out.println();
     }
 
+    // Getters and Setters  
     public Tile[] getTiles() {
         return playerTiles;
     }

@@ -1,4 +1,3 @@
-
 public class OkeyGame {
 
     Player[] players;
@@ -11,6 +10,10 @@ public class OkeyGame {
         players = new Player[4];
     }
 
+    /*
+     * Shuffles the tiles. This is done before distributing the tiles to the players. 
+     * The shuffle is done by swapping each tile with a random tile.
+     */
     public void shuffleTiles() {
         for (int i = 0; i < tiles.length; i++) {
             int randomIndex = (int) (Math.random() * tiles.length);
@@ -20,6 +23,12 @@ public class OkeyGame {
         }
     }
 
+    /*
+     * Creates the tiles for the game.
+     * There are 7 different values (1-7) and 4 different colors (Y, B, R, K).
+     * Each tile has a value and a color.
+     * There are 4 copies of each tile.
+     */
     public void createTiles() {
         tiles = new Tile[112]; // 7 values * 4 colors * 4 copies = 112 tiles
         int index = 0;
@@ -63,6 +72,7 @@ public class OkeyGame {
 
     /*
      * Picks the discarded tile for the current player.
+     * If the last discarded tile is not picked, it is returned to the discard pile. 
      */
     public Tile pickDiscardTile() {
         Tile temp = lastDiscardedTile;
@@ -98,6 +108,7 @@ public class OkeyGame {
     /*
      * Computer discards the least useful tile.
      * It first looks for duplicates (or tiles that contribute to the smallest chain) to discard.
+     * If no such tile is found, it discards the first tile in hand.
      */
     public void discardTileForComputer() {
         int minChainLength = 4;
@@ -138,6 +149,9 @@ public class OkeyGame {
         lastDiscardedTile = discardedTile;
     }
 
+    /*
+     * Displays the last discarded tile.
+     */
     public void displayDiscardInformation() {
         if (lastDiscardedTile != null) {
             System.out.println("Last Discarded: " + lastDiscardedTile);
@@ -150,6 +164,7 @@ public class OkeyGame {
         System.out.println();
     }
 
+    // Getters and setters
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
     }
