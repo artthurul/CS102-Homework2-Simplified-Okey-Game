@@ -14,6 +14,9 @@ public class Tile {
 
     /*
      * Compares two tiles so they can be maintained in sorted order.
+     * First, tiles are sorted by color (Y < B < R < K).
+     * If colors are the same, tiles are sorted by value (1 < 2 < ... < 7).
+     * Returns -1 if this tile is less than t, 1 if this tile is greater than t, and 0 if they are equal.
      */
     public int compareTo(Tile t) {
         if (colorNameToInt() < t.colorNameToInt()) {
@@ -31,22 +34,23 @@ public class Tile {
         }
     }
 
+    /*
+     * Converts the color of this tile to an integer.
+     * Y -> 0, B -> 1, R -> 2, K -> 3
+     */
     public int colorNameToInt() {
-        switch (color) {
-            case 'Y':
-                return 0;
-            case 'B':
-                return 1;
-            case 'R':
-                return 2;
-            default:
-                return 3;
-        }
+        return switch (color) {
+            case 'Y' -> 0;
+            case 'B' -> 1;
+            case 'R' -> 2;
+            default -> 3;
+        };
     }
 
     /*
      * Determines if this tile can form a chain with tile t.
      * In our variant, a chain is only formed by tiles of the same number but different colors.
+     * Returns true if the tiles can form a chain, false otherwise.
      */
     public boolean canFormChainWith(Tile t) {
         return (t.getColor() != color && t.getValue() == value);
