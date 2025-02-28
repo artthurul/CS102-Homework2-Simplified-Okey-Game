@@ -43,6 +43,7 @@ public class Tile {
             case 'Y' -> 0;
             case 'B' -> 1;
             case 'R' -> 2;
+            default -> 3;
         };
     }
 
