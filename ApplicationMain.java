@@ -5,9 +5,21 @@ public class ApplicationMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         OkeyGame game = new OkeyGame();
+        // Ensure valid input for gamePlayChoice
+        char gamePlayChoice;
+        boolean isValid = false;
 
-        System.out.println("Do you want to play the game as a user? Y/N");
-        char gamePlayChoice = sc.next().charAt(0);
+        do {
+            System.out.println("\nDo you want to play the game as a user? Y/N");
+            gamePlayChoice = sc.next().charAt(0);
+            isValid = (gamePlayChoice == 'Y' || gamePlayChoice == 'y' || gamePlayChoice == 'N' || gamePlayChoice == 'n');
+
+            if (!isValid) {
+                System.out.println("Invalid input. Please enter only 'Y' or 'N'!\n");
+            }
+        } while (!isValid);
+
+        
         if (gamePlayChoice == 'N' || gamePlayChoice == 'n') {
             game.setPlayerName(0, "Frank");
             game.setPlayerName(1, "John");
@@ -21,7 +33,7 @@ public class ApplicationMain {
             // developer mode is used for seeing the computer players’ hands, to be used for debugging
             System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
             char devMode = sc.next().charAt(0);
-            boolean devModeOn = devMode == 'Y';
+            boolean devModeOn = devMode == 'Y' || devMode == 'y';
     
             boolean gameContinues = true;
     
@@ -52,7 +64,7 @@ public class ApplicationMain {
                     }
             }
         }
-        else {
+        else if ( gamePlayChoice == 'Y' || gamePlayChoice == 'y' ) {
             System.out.print("Please enter your name: ");
             String playerName = sc.next();
     
