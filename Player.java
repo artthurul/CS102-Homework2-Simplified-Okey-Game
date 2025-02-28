@@ -116,13 +116,18 @@ public class Player {
      * Displays the tiles in the player's hand.
      */
     public void displayTiles() {
-        String title1 = playerName + "'s Tiles Below";
-        String title2 = "";
-        for (int i = 0; i < title1.length(); i++) {
-            title2 += "- ";
-        }
+        String title1 = "\n" + playerName + "'s Tiles Below \n\nWe wish you a good game.";
         System.out.println(title1);
-        System.out.println(title2);
+
+        System.out.print("Index Number: ");
+        for (int i = 0; i < numberOfTiles; i++) {
+            System.out.printf("%2d ", i);
+        }
+
+        // Goes to next line for printing the stack.
+        System.out.println();
+
+        System.out.print("Tiles       : ");
         for (int i = 0; i < numberOfTiles; i++) {
             System.out.print(playerTiles[i] + " ");
         }
