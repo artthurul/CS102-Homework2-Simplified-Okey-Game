@@ -107,6 +107,11 @@ public class Player {
         return -1;
     }
 
+    // Getter method for number of tiles.
+    public int getNoTiles() {
+        return numberOfTiles;
+    }
+
     /*
      * Displays the tiles in the player's hand.
      */
